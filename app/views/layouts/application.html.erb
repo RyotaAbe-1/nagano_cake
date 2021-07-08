@@ -9,7 +9,35 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="border border-dark">
+    <header class="border-bottom border-dark">
+
+      <div class="d-flex justify-content-between align-items-center mx-5">
+        <h1 class="border border-dark px-5 py-2 mt-5 mb-4">
+          LOGO
+        </h1>
+        <div class="d-flex">
+          <% if admin_signed_in? %>
+            <p class="btn btn-outline-secondary">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-dark" %>
+            </p>
+          <% else %>
+            <p class="btn btn-outline-secondary ml-4">
+              <%= link_to "新規登録", new_admin_registration_path, class: "text-dark" %>
+            </p>
+            <p class="btn btn-outline-secondary ml-4">
+              <%= link_to "ログイン", new_admin_session_path, class: "text-dark" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+
+    </header>
+
     <%= yield %>
+
+    <footer class="border-top border-dark">
+
+    </footer>
   </body>
 </html>

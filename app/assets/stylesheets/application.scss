@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ 
+ body {
+  margin: 10px 20px;
+ }
+ .header {
+  height: 15vh;
+ }
+ .container {
+  height: 75vh;
+ }
+
+ footer {
+  height: 10vh;
+ }
