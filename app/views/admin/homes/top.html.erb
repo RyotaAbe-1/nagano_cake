@@ -1,12 +1,33 @@
 <div class="container mt-3">
+  <div class="col-md-10 mx-auto">
+    <p>注文履歴一覧</p>
 
-  <% @orders.each do |order| %>
-    <%= order.created_at %>
-    <%= order.name %>
-    <!--??-->
-    <%= order.order_details.amount %>
-    <%= order.order_status %>
-    <% binding.pry %>
-  <% end %>
-    
+    <table class="border-top w-100">
+      <tr class="border-bottom">
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
+      <tr class="border-bottom">
+        <% @orders.each do |order| %>
+        <td>
+          <%= order.created_at %>
+        </td>
+        <td>
+          <%= order.name %>
+        </td>
+        <td>
+          <!--??-->
+          <%= order.order_details.amount %>
+        </td>
+        <td>
+          <!--??-->
+          <%= order.order_status %>
+        </td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+
 </div>

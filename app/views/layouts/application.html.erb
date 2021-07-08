@@ -18,9 +18,17 @@
         </h1>
         <div class="d-flex">
           <% if admin_signed_in? %>
-            <p class="btn btn-outline-secondary">
+            <p class="btn btn-outline-secondary btn-sm ml-4">
+              <%= link_to "商品一覧", admin_items_path, class: "text-dark" %>
+            </p>
+            <p class="btn btn-outline-secondary btn-sm ml-4">
+              <%= link_to "注文履歴一覧", admin_root_path, class: "text-dark" %>
+            </p>
+            <p class="btn btn-outline-secondary btn-sm ml-4">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-dark" %>
             </p>
+          <% elsif customer_signed_in? %>
+
           <% else %>
             <p class="btn btn-outline-secondary ml-4">
               <%= link_to "新規登録", new_admin_registration_path, class: "text-dark" %>
