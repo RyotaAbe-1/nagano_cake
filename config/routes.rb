@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
   namespace :admin do
     get "/" => "homes#top", as: :root
     resources :items, except: [:destroy]
@@ -13,4 +12,5 @@ Rails.application.routes.draw do
       resources :order_details, only: [:update]
     end
   end
+  
 end
