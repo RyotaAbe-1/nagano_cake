@@ -16,32 +16,35 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
- }
- body {
-  margin: 10px 20px;
- }
- .header {
-  height: 15vh;
- }
- .container {
-  height: 75vh;
- }
 
- footer {
-  height: 10vh;
- }
- 
- // 共通
- .title {
-  display: inline-block;
-  background-color: lightgray;
-  padding: 0 20px;
- }
+* {
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+}
+body {
+ margin: 10px 20px;
+}
+.header {
+ height: 15vh;
+}
+.container {
+ height: 75vh;
+}
 
+footer {
+ height: 10vh;
+}
+
+// 共通
+.title {
+ display: inline-block;
+ background-color: lightgray;
+ padding: 0 20px;
+}
+.table-title {
+ background-color: rgb(244, 239, 232);
+}
  // admin/items/index
 .create_items {
  top: 15px;
