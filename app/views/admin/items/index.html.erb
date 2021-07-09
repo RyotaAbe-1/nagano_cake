@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <div class="col-md-10 mx-auto pt-4 position-relative">
+    <p class="title">商品一覧</p>
+
+    <table class="border-top w-100 mt-3">
+      <tr class="border-bottom">
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </tr>
+      <tr class="border-bottom">
+        <% @items.each do |item| %>
+        <td>
+          <%= item.id %>
+        </td>
+        <td>
+          <%= item.name %>
+        </td>
+        <td>
+          <%= item.price %>
+        </td>
+        <td>
+          <%= item.genre %>
+        </td>
+        <td>
+          <% if item.is_active == true %>
+            <p>販売中</p>
+          <% else %>
+            <p>販売停止中</p>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+    </table>
+
+      <%= link_to new_admin_item_path, class: "create_items btn btn-light position-absolute p-0" do %>
+      +
+      <% end %>
+
+
+  </div>
+
+</div>
