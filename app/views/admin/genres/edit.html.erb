@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="col-md-10 pt-4">
+    <p class="title mb-5">ジャンル編集/p>
+
+    <%= form_with model:[:admin, @genre], local: true do |f| %>
+      <div class="w-50">
+        <div class="form-group row">
+          <label class="col-3 form-label">ジャンル</label>
+          <%= f.text_field :name, class: "col-5 form-control form-control-sm" %>
+          <%= f.submit "新規登録", class: "col-3 ml-auto btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
