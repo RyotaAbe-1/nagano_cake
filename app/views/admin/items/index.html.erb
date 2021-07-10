@@ -3,36 +3,39 @@
     <p class="title">商品一覧</p>
 
     <table class="border-top w-100 mt-3">
-      <tr class="border-bottom">
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
-      </tr>
-      <tr class="border-bottom">
+      <thead class="table-title table-height">
+        <tr class="border-bottom">
+          <th class="pl-2">商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody class="table-height">
         <% @items.each do |item| %>
-        <td>
-          <%= item.id %>
-        </td>
-        <td>
-          <%= link_to "#{item.name}", admin_item_path(item), class: "text-dark" %>
-        </td>
-        <td>
-          <%= item.price %>
-        </td>
-        <td>
-          <%= item.genre %>
-        </td>
-        <td>
-          <% if item.is_active == true %>
-            <p>販売中</p>
-          <% else %>
-            <p>販売停止中</p>
-          <% end %>
-        </td>
+          <tr class="border-bottom">
+            <td class="pl-2">
+              <%= item.id %>
+            </td>
+            <td>
+              <%= link_to item.name, admin_item_path(item), class: "text-dark" %>
+            </td>
+            <td>
+              <%= item.price.to_s(:delimited) %>
+            </td>
+            <td>
+              <%= item.genre.name %>
+            </td>
+            <% if item.is_active == true %>
+              <td class="text-success">販売中</td>
+            <% else %>
+              <td class="text-secondary">販売停止中</td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
+
+      </tbody>
     </table>
 
       <%= link_to new_admin_item_path, class: "create_items btn btn-light position-absolute p-0" do %>

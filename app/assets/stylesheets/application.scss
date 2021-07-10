@@ -45,6 +45,12 @@ footer {
 .table-title {
   background-color: rgb(244, 239, 232);
 }
+.table-height th {
+  padding: 10px 0;
+}
+.table-height td {
+  padding: 10px 0;
+}
  // admin/items/index
 .create_items {
   top: 15px;
@@ -57,8 +63,4 @@ footer {
   border-radius: 50%;
   box-shadow: 3px 3px gray;
   color: gray;
-}
-
-.table-height td {
-  padding-bottom: 20px;
 }
