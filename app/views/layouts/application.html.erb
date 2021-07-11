@@ -37,7 +37,9 @@
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </p>
           <% elsif customer_signed_in? %>
-
+            <p class="btn btn-outline-secondary btn-sm ml-4">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            </p>
           <% else %>
             <p class="btn btn-outline-secondary ml-4">
               <%= link_to "About", about_path %>
