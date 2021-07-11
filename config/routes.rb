@@ -20,4 +20,20 @@ Rails.application.routes.draw do
       resources :order_details, only: [:update]
     end
   end
+
+  scope module: :public do
+    root "homes#top"
+    get "/about" => "homes#about"
+    resources :items, only: [:index, :show]
+    resource :customers, only: [:show, :edit, :update]
+    get "/customers/confirm" => "customers#confirm"
+    get "/customers/withdraw" => "customers#withdraw"
+    resources :cart_items, only: [:index, :update, :create, :destroy]
+    get "/cart_items/destroy_all" => "cart_items#destroy_all"
+    resources :odrers, only: [:new, :create, :index, :show]
+    get "/orders/confirm" => "orders#confirm"
+    get "/orders/thanks" => "orders#thanks"
+    resources :address, except: [:show, :new]
+  end
+
 end
