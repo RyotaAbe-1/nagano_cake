@@ -17,11 +17,7 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 body {
   margin: 10px 20px;
 }
@@ -37,6 +33,10 @@ footer {
 }
 
 // 共通
+.logo {
+  width: 100px;
+  height: 70px;
+}
 .title {
   display: inline-block;
   background-color: lightgray;
@@ -51,6 +51,11 @@ footer {
 .table-height td {
   padding: 10px 0;
 }
+.btn a {
+  text-decoration: none;
+  color: black;
+}
+
  // admin/items/index
 .create_items {
   top: 15px;
@@ -63,4 +68,39 @@ footer {
   border-radius: 50%;
   box-shadow: 3px 3px gray;
   color: gray;
+}
+
+// public/homes/top
+.top-visual {
+  width: 70%;
+  height: 35vh;
+  background-image: url(bg_cake.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.top-visual-message {
+  width: 65%;
+  height: 50%;
+  padding: 20px 0;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
+
+// public/homes/about
+.about h1 {
+  font-size: 80px;
+}
+.about p {
+  font-size: 23px;
+}
+.about-visual {
+  width: 60%;
+  height: 28vh;
+  background-image: url(bgabout.jpg);
+  background-size: cover;
+  background-position: center;
 }

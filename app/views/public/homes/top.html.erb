@@ -1,8 +1,59 @@
 <div class="container mt-3">
-  <div class="col-md-10 mx-auto pt-4 position-relative">
+  <div class="col-md-10 mx-auto pt-4">
 
-    
-    
+    <div class="top-visual mx-auto">
+      <div class="top-visual-message">
+        <p>
+          ようこそ、ながのCAKEへ!
+        </p>
+        <p>
+          このサイトは,ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <div class="d-flex">
+        <h2>新着商品</h2>
+
+        <div class="btn-group ml-auto">
+          <button type="button" class="btn btn-light btn-sm">ジャンル検索</button>
+          <button type="button" class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <% @genres.each do |genre| %>
+      
+              <%= link_to genre.name, items_path, class: "dropdown-item" %>
+              
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-flex justify-content-around mt-3">
+        <% @items.each do |item| %>
+        <div>
+          <div>
+            <%= attachment_image_tag item, :image, :fill, 190, 140 %>
+          </div>
+          <div>
+            <p class="mt-2">
+              <%= item.name %>
+            </p>
+            <p>
+              ¥<%= (item.price * 1.1).floor.to_s(:delimited) %>
+            </p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+
+
   </div>
-
 </div>
