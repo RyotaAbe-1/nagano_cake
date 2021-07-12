@@ -1,8 +1,14 @@
 <div class="container mt-3">
   <div class="col-md-10 mx-auto pt-4">
     <div class="d-flex align-items-center">
-      <strong class="h3"><%= "#{@genre.name}一覧"%></strong>
-      <strong><%="(全#{@items_all.count}件)"%></strong>
+      <% if @genre %>
+        <strong class="h3"><%= "#{@genre.name}一覧 "%></strong>
+        <strong><%= "(全#{@items_all.count}件)" %></strong>
+      <% else %>
+        <strong class="h3">商品一覧</strong>
+        <strong><%= "(全#{@items_all.count}件)" %></strong>
+      <% end %>
+
 
       <div class="btn-group ml-auto">
         <button type="button" class="btn btn-light btn-sm">ジャンル検索</button>
