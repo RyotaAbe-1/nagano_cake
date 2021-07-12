@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <div class="col-md-10 mx-auto pt-4">
+    <div class="d-flex align-items-center">
+      <strong class="h3"><%= "#{@genre.name}一覧"%></strong>
+      <strong><%="(全#{@items_all.count}件)"%></strong>
+
+      <div class="btn-group ml-auto">
+        <button type="button" class="btn btn-light btn-sm">ジャンル検索</button>
+        <button type="button" class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <% @genres.each do |genre| %>
+            <%= link_to genre.name, {controller: "public/items", action: "index", id: genre.id}, class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap mt-4">
+      <% @items.each do |item| %>
+        <div class="items-index">
+          <div>
+            <%= link_to item_path(item) do %>
+              <%= attachment_image_tag item, :image, :fill, 200, 150 %>
+            <% end %>
+          </div>
+          <div>
+            <p>
+              <%= item.name %>
+            </p>
+            <p>
+              ¥<%= (item.price * 1.1).floor.to_s(:delimited) %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+      <%= paginate @items %>
+    </div>
+
+  </div>
+</div>

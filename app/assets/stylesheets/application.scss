@@ -17,7 +17,6 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-
 body {
   margin: 10px 20px;
 }
@@ -116,4 +115,12 @@ footer {
   background-image: url(bgabout.jpg);
   background-size: cover;
   background-position: center;
+}
+
+// public/items/index
+.items-index {
+  width: calc(25%-10px);
+  padding: 5px 5px;
+  margin: 5px 5px;
+  background-color: lightgray;
 }

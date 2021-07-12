@@ -18,7 +18,7 @@
               <%= customer.id %>
             </td>
             <td>
-              <%= link_to customer.name, admin_customer_path(customer), class: "text-dark" %>
+              <%= link_to customer.last_name + customer.first_name, admin_customer_path(customer), class: "text-dark" %>
             </td>
             <td>
               <%= customer.email %>
@@ -32,6 +32,8 @@
         <% end %>
       </tbody>
     </table>
-
+    <div class="d-flex justify-content-center mt-3">
+      <%= paginate @customers %>
+    </div>
   </div>
 </div>

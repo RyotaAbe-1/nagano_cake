@@ -15,8 +15,8 @@
     </div>
 
     <div class="mt-5">
-      <div class="d-flex">
-        <h2>新着商品</h2>
+      <div class="d-flex align-items-center">
+        <strong class="h2">新着商品</strong>
 
         <div class="btn-group ml-auto">
           <button type="button" class="btn btn-light btn-sm">ジャンル検索</button>
@@ -25,9 +25,7 @@
           </button>
           <div class="dropdown-menu">
             <% @genres.each do |genre| %>
-      
-              <%= link_to genre.name, items_path, class: "dropdown-item" %>
-              
+              <%= link_to genre.name, {controller: "public/items", action: "index", id: genre.id}, class: "dropdown-item" %>
             <% end %>
           </div>
         </div>
@@ -38,7 +36,9 @@
         <% @items.each do |item| %>
         <div>
           <div>
-            <%= attachment_image_tag item, :image, :fill, 190, 140 %>
+            <%= link_to item_path(item) do %>
+              <%= attachment_image_tag item, :image, :fill, 190, 140 %>
+            <% end %>
           </div>
           <div>
             <p class="mt-2">
@@ -52,8 +52,6 @@
         <% end %>
       </div>
     </div>
-
-
 
   </div>
 </div>

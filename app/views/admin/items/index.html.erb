@@ -34,14 +34,16 @@
             <% end %>
           </tr>
         <% end %>
-
       </tbody>
     </table>
 
-      <%= link_to new_admin_item_path, class: "create_items btn btn-light position-absolute p-0" do %>
-      +
-      <% end %>
+    <%= link_to new_admin_item_path, class: "create_items btn btn-light position-absolute p-0" do %>
+    +
+    <% end %>
+  </div>
 
+  <div class="d-flex justify-content-center mt-3">
+    <%= paginate @items %>
   </div>
 
 </div>
