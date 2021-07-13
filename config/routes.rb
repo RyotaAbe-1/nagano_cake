@@ -27,11 +27,11 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resource :customers, only: [:show, :edit, :update]
     get "/customers/confirm" => "customers#confirm"
-    get "/customers/withdraw" => "customers#withdraw"
+    patch "/customers/withdraw" => "customers#withdraw"
+    delete "/cart_items/destroy_all" => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :update, :create, :destroy]
-    get "/cart_items/destroy_all" => "cart_items#destroy_all"
-    resources :odrers, only: [:new, :create, :index, :show]
-    get "/orders/confirm" => "orders#confirm"
+    resources :orders, only: [:new, :create, :index, :show]
+    post "/orders/confirm" => "orders#confirm"
     get "/orders/thanks" => "orders#thanks"
     resources :address, except: [:show, :new]
   end

@@ -1,38 +1,49 @@
 <div class="container mt-3">
   <div class="col-md-10 mx-auto pt-4">
+
+    <div class="d-flex">
+      <div class="btn-group ml-auto">
+        <button type="button" class="btn btn-light btn-sm">ジャンル検索</button>
+        <button type="button" class="btn btn-light btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <% @genres.each do |genre| %>
+            <%= link_to genre.name, {controller: "public/items", action: "index", id: genre.id}, class: "dropdown-item" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
     <div class="d-flex justify-content-around mt-5">
       <div>
         <%= attachment_image_tag @item, :image, :fill, 280, 210, class: "border" %>
       </div>
-
       <div class="w-50">
         <div class="mt-1">
           <strong class="h2">
             <%= @item.name %>
           </strong>
         </div>
-
         <div class="h-50 mt-2">
           <%= @item.introduction %>
         </div>
-
         <div>
           <strong class="h4">
             ¥ <%= (@item.price * 1.1).floor.to_s(:delimited) %>
           </strong>
           <span>(税込)</span>
         </div>
-
         <div class="mt-5">
-          <%= form_with model: @cart_item, local: true do |f| %>
+          <%= form_with model: @cart_item, url: {controller: "public/cart_items", action: "create", id: @item.id}, local: true do |f| %>
             <% array_amount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
             <%= f.select :amount, array_amount, prompt: "個数選択", class: "form-control" %>
             <%= f.submit "カートに入れる", class: "btn btn-success btn-sm ml-5" %>
           <% end %>
         </div>
-
       </div>
-
     </div>
+
   </div>
 </div>

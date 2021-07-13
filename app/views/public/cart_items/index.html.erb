@@ -1,0 +1,77 @@
+<div class="container mt-3">
+  <div class="col-md-10 mx-auto">
+    <div class="d-flex mb-3 mt-4">
+      <p class="title">ショッピングカート</p>
+      <div class="ml-auto">
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger btn-sm" %>
+      </div>
+    </div>
+
+    <div>
+      <table class="cart-table w-100" border="1">
+        <thead class="table-title table-height">
+          <tr>
+            <th class="col-4">商品名</th>
+            <th class="col-2">単価(税込)</th>
+            <th class="col-2">数量</th>
+            <th class="col-2">小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag cart_item.item, :image, :fill, 65, 45 %>
+
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.include_tax(1.1).floor.to_s(:delimited) %>
+              </td>
+              <td class="text-center">
+                <%= form_with model: cart_item, local: true do |f| %>
+                  <% array_amount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+                  <%= f.select(:amount, array_amount, selected: cart_item.amount) %>
+                  <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+                <% end %>
+              </td>
+              <td>
+                <%= (cart_item.include_tax(1.1).floor * cart_item.amount).to_s(:delimited) %>
+              </td>
+              <td class="text-center">
+                <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger btn-sm" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <div class="ml-5 mt-3">
+        <%= link_to "買い物を続ける", root_path, class: "text-light btn btn-primary btn-sm" %>
+      </div>
+      <div>
+        <% array_total = [] %>
+        <% @cart_items.each do |cart_item| %>
+          <% array_total.push(cart_item.include_tax(1.1).floor * cart_item.amount) %>
+        <% end %>
+        <div class="cart-total d-flex border border-dark">
+          <div class="table-title pl-2 border-right border-dark">
+            合計金額
+          </div>
+          <div class="pl-2">
+            <%= array_total.sum.to_s(:delimited) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+    </div>
+
+
+  </div>
+</div>
