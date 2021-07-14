@@ -4,7 +4,7 @@
   </div>
   <div class="w-75 mt-4 ml-5">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "customers/shared/error_messages", resource: resource %>
+      <%= render "publics/shared/error_messages", resource: resource %>
       <table>
         <thead>
           <tr>
@@ -133,7 +133,7 @@
     <div class="col-md-10 mx-auto pt-4">
       <p class="title">既に登録済みの方</p>
       <div class="d-flex ml-5">
-        <%= render "customers/shared/links" %>
+        <%= render "publics/shared/links" %>
         <p class="pl-2">
           からログインしてください。
         </p>

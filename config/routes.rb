@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
   devise_for :customers, controllers: {
-    sessions:     'customers/sessions',
-    passwords:     'customers/passwords',
-    registrations: 'customers/registrations'
+    sessions:     'publics/sessions',
+    passwords:     'publics/passwords',
+    registrations: 'publics/registrations'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -24,20 +24,20 @@ Rails.application.routes.draw do
   scope module: :public do
     root "homes#top"
     get "/about" => "homes#about"
-    
+
     resources :items, only: [:index, :show]
-    
+
     get "/customers/confirm" => "customers#confirm"
     patch "/customers/withdraw" => "customers#withdraw"
     resource :customers, only: [:show, :edit, :update]
-    
+
     delete "/cart_items/destroy_all" => "cart_items#destroy_all"
     resources :cart_items, only: [:index, :update, :create, :destroy]
-    
+
     post "/orders/confirm" => "orders#confirm"
     get "/orders/thanks" => "orders#thanks"
     resources :orders, only: [:new, :create, :index, :show]
-    
+
     resources :address, except: [:show, :new]
   end
 
