@@ -1,0 +1,31 @@
+<div class="container mt-3">
+  <div class="col-md-10 mx-auto pt-4">
+    <div class="text-center">
+      <strong>
+         本当に退会しますか？
+      </strong>
+    </div>
+    <div class="text-center mt-4">
+      <div>
+        退会すると、会員登録情報や
+      </div>
+      <div>
+        これまでの購入履歴が閲覧できなくなります。
+      </div>
+      <div>
+        退会する場合は、「退会する」をクリックしてください。
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <div class="d-flex justify-content-center">
+        <%= link_to "退会しない", customers_path, class: "btn btn-primary btn-sm px-5 mr-4" %>
+        <%= form_with model: @customer, url: {controller: "public/customers", action: "withdraw"}, local: true do |f| %>
+          <%= f.hidden_field :is_active, value: false %>
+          <%= f.submit "退会する", class: "btn btn-danger btn-sm px-5" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

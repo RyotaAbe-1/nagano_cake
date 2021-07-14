@@ -38,6 +38,9 @@
             </p>
           <% elsif customer_signed_in? %>
             <p class="btn btn-outline-secondary btn-sm ml-4">
+              <%= link_to "マイページ", customers_path %>
+            </p>
+            <p class="btn btn-outline-secondary btn-sm ml-4">
               <%= link_to "商品一覧", items_path %>
             </p>
             <p class="btn btn-outline-secondary btn-sm ml-4">
