@@ -45,7 +45,7 @@ footer {
   background-color: rgb(244, 239, 232);
 }
 .table-height th {
-  padding: 10px 0;
+  padding: 15px 0;
 }
 .table-height td {
   padding: 10px 0;
@@ -137,4 +137,27 @@ footer {
 .cart-total div {
   width: 150px;
   line-height: 50px;
+}
+
+// public/orders/confirm
+.order-table {
+  width: 80vh;
+}
+.order-table tr {
+  height: 55px;
+}
+.order-table1 {
+  width: 40%;
+}
+.order-table2 {
+  width: 20%;
+}
+.total-table {
+  width: 20vh;
+}
+.total-table tr {
+  height: 55px;
+}
+.total-table1 {
+  width: 50%;
 }
