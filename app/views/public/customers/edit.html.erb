@@ -1,6 +1,55 @@
 <div class="container mt-3">
-  <div class="col-md-10 mx-auto pt-4">
+  <div class="col-md-10 mx-auto py-4">
     <p class="title">会員情報編集</p>
-    <%= form_with %>
   </div>
-<div>
+
+  <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+    <table class="customer-edit-table">
+      <tbody>
+        <tr>
+          <td>氏名</td>
+          <td><%= f.text_field :last_name %></td>
+          <td><%= f.text_field :first_name %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>フリガナ</td>
+          <td><%= f.text_field :last_name_kana %></td>
+          <td><%= f.text_field :first_name_kana %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= f.text_field :postal_code %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td colspan="3"><%= f.text_field :address, class: "w-100" %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= f.text_field :telephone_number %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.text_field :email %></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="pt-3"><%= f.submit "編集内容を保存", class:"btn btn-success btn-sm px-5" %></td>
+          <td></td>
+          <td class="pt-3"><%= link_to "退会する", customers_confirm_path, class: "btn btn-danger btn-sm px-3" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+
+</div>

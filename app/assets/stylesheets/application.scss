@@ -169,3 +169,10 @@ footer {
 .customer-table td:nth-child(odd) {
   background-color: rgb(244, 239, 232);
 }
+// public/customers/edit
+.customer-edit-table tr > td:nth-child(1), td:nth-child(2),td:nth-child(3) {
+  width: 180px;
+}
+.customer-edit-table td {
+  padding: 5px 10px;
+}
