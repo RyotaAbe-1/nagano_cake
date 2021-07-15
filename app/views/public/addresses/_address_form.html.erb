@@ -1,0 +1,30 @@
+<table class="address-form">
+  <tbody>
+    <%= form_with model: address, local: true do |f| %>
+      <tr>
+        <td class="px-2 py-2">郵便番号(ハイフンなし)</td>
+        <td class="pl-4"><%= f.text_field :postal_code %></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="px-2 py-2">住所</td>
+        <td class="pl-4" colspan="2"><%= f.text_field :address, class: "w-100" %></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="px-2 py-2">宛名</td>
+        <td class="pl-4"><%= f.text_field :name %></td>
+        <td></td>
+        <td>
+          <% if edit_frag == true %>
+            <%= f.submit "変更内容を保存", class: "btn btn-success btn-sm px-4" %>
+          <% else %>
+            <%= f.submit "新規登録", class: "btn btn-success btn-sm px-4" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

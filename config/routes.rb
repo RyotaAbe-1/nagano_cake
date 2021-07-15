@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get "/orders/thanks" => "orders#thanks"
     resources :orders, only: [:new, :create, :index, :show]
 
-    resources :address, except: [:show, :new]
+    resources :addresses, except: [:show, :new]
   end
 
 end
