@@ -4,11 +4,15 @@ Rails.application.routes.draw do
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
-  devise_for :customers, controllers: {
-    sessions:     'publics/sessions',
-    passwords:     'publics/passwords',
-    registrations: 'publics/registrations'
-  }
+
+  devise_for :customers, skip: :all
+  devise_scope :customer do
+    get "/customers/sign_in" => "publics/sessions#new", as: :new_customer_session
+    post "/customers/sign_in" => "publics/sessions#create", as: :customer_session
+    delete "/customers/sign_out" => "publics/sessions#destroy", as: :destroy_customer_session
+    get "/customers/sign_up" => "publics/registrations#new", as: :new_customer_registration
+    post "/customers" => "publics/registrations#create", as: :customer_registration
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :admin do
