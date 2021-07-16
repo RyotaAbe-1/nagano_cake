@@ -12,26 +12,26 @@
         </tr>
       </thead>
       <tbody class="table-height">
-        <tr class="border-bottom">
-          <% @orders.each do |order| %>
-          <td>
-            <%= link_to admin_order_path(order) do %>
-              <%= order.created_at %>
-            <% end %>
-          </td>
-          <td>
-            <%= order.name %>
-          </td>
-          <td>
-            <!--??-->
-            <%= order.order_details.count %>
-          </td>
-          <td>
-            <!--??-->
-            <%= order.order_status %>
-          </td>
-          <% end %>
-        </tr>
+        <% @orders.each do |order| %>
+          <tr class="border-bottom">
+            <td class="pl-2">
+              <%= link_to "#{l order.created_at}", admin_order_path(order), class: "text-dark" %>
+            </td>
+            <td>
+              <%= order.customer.last_name + order.customer.first_name %>
+            </td>
+            <td>
+              <% array_amount = [] %>
+              <% order.order_details.each do |order_detail| %>
+                <% array_amount.push(order_detail.amount) %>
+              <% end %>
+              <%= array_amount.sum %>
+            </td>
+            <td>
+              <%= order.order_status %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
 
     </table>

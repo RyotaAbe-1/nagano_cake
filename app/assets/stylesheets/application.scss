@@ -48,7 +48,7 @@ footer {
   background-color: rgb(244, 239, 232);
 }
 .table-height th {
-  padding: 15px 0;
+  padding: 10px 0;
 }
 .table-height td {
   padding: 10px 0;
@@ -56,6 +56,10 @@ footer {
 .btn a {
   text-decoration: none;
   color: black;
+}
+ // admin/customers/index
+.customer-index-table th:nth-child(3) {
+  width: 40%;
 }
  // admin/items/index
 .create_items {

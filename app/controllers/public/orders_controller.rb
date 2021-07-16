@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  skip_before_action :authenticate_admin!
+  
   def new
     @order = Order.new
     @addresses = Address.where(customer_id: current_customer.id)

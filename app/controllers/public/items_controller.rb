@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  skip_before_action :authenticate_admin!
+  
   def index
     if params[:id]
       @genre = Genre.find(params[:id])

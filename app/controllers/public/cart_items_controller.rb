@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  skip_before_action :authenticate_admin!
+  
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
   end

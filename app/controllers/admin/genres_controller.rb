@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+  skip_before_action :authenticate_customer!
 
   def create
     genre = Genre.new(genre_params)

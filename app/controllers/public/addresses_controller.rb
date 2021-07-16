@@ -1,4 +1,6 @@
 class Public::AddressesController < ApplicationController
+  skip_before_action :authenticate_admin!
+  
   def index
     @address = Address.new
     @addresses = Address.where(customer_id: current_customer.id)
