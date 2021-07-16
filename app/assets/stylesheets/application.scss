@@ -32,6 +32,9 @@ footer {
 }
 
 // 共通
+.error {
+  color: red;
+}
 .logo {
   width: 100px;
   height: 70px;
@@ -156,6 +159,15 @@ footer {
 }
 
 // public/addresses/index
+.address-table {
+width: 75%;
+}
+.address-table th:nth-child(2) {
+  width: 40%;
+}
+.address-table th:nth-child(odd) {
+  width: 15%;
+}
 .address-table th {
   padding: 10px 5px;
 }

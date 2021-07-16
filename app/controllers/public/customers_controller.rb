@@ -19,11 +19,12 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     customer = Customer.find(current_customer.id)
-    customer.update(customer_params)
+    customer.update(is_active: false)
+    reset_session
     redirect_to root_path
   end
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email, :is_active)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number, :email)
   end
 end

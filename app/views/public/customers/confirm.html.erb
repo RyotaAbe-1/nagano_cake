@@ -20,10 +20,8 @@
     <div class="mt-5">
       <div class="d-flex justify-content-center">
         <%= link_to "退会しない", customers_path, class: "btn btn-primary btn-sm px-5 mr-4" %>
-        <%= form_with model: @customer, url: {controller: "public/customers", action: "withdraw"}, local: true do |f| %>
-          <%= f.hidden_field :is_active, value: false %>
-          <%= f.submit "退会する", class: "btn btn-danger btn-sm px-5" %>
-        <% end %>
+        <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-danger btn-sm px-5" %>
+
       </div>
 
     </div>
