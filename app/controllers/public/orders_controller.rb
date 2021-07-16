@@ -14,25 +14,27 @@ class Public::OrdersController < ApplicationController
     if params[:info] == "1"
       @order = Order.new(order_params)
       @order.id = current_customer.id
-
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-
       @order.shipping_fee = 800
       @order.total_payment = array_total.sum + @order.shipping_fee
-
     elsif params[:info] == "2"
+      @order = Order.new(order_params)
+      @order.id = current_customer.id
+      address = Address.find(params[:select_info])
+      @order.postal_code = address.postal_code
+      @order.address = address.address
+      @order.name = address.name
+      @order.shipping_fee = 800
       @order.total_payment = array_total.sum + @order.shipping_fee
     elsif params[:info] == "3"
       @order = Order.new(order_params)
       @order.id = current_customer.id
       @order.shipping_fee = 800
-
       @order.total_payment = array_total.sum + @order.shipping_fee
     end
   end
-
 
   def create
     order = Order.new(order_params)
@@ -46,12 +48,10 @@ class Public::OrdersController < ApplicationController
     order.total_payment = array_total.sum + order.shipping_fee
     order.save
     redirect_to orders_thanks_path
-
   end
-  
+
   def thanks
   end
-  
 
   private
   def order_params

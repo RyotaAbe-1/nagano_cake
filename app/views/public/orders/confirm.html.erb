@@ -69,14 +69,14 @@
   </div>
 
   <div>
-    <div class="mt-4">
-      <strong class="h5 mr-2">支払方法</strong>
-      <span>
+    <div class="d-flex align-items-center mt-4">
+      <strong class="h5 font-weight-bold mr-3">支払方法</strong>
+      <div>
         <%= @order.payment_method %>
-      </span>
+      </div>
     </div>
     <div class="d-flex mt-4">
-      <strong class="h5 mr-2">お届け先</strong>
+      <strong class="h5 font-weight-bold mr-3">お届け先</strong>
       <div>
         <%= "〒#{@order.postal_code} #{@order.address}" %><br>
         <%= @order.name %>
