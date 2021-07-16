@@ -1,6 +1,6 @@
-<table class="address-form">
-  <tbody>
-    <%= form_with model: address, local: true do |f| %>
+<%= form_with model: address, local: true do |f| %>
+  <table class="address-form">
+    <tbody>
       <tr>
         <td class="px-2 py-2">郵便番号(ハイフンなし)</td>
         <td class="pl-4"><%= f.text_field :postal_code %></td>
@@ -25,6 +25,6 @@
           <% end %>
         </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+<% end %>

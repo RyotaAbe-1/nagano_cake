@@ -4,43 +4,46 @@
   </div>
 
   <div class="d-flex">
-    <table class="cart-table order-table" border="1">
-      <thead class="table-title">
-        <tr>
-          <th class="order-table1">商品名</th>
-          <th class="order-table2">単価(税込)</th>
-          <th class="order-table2">数量</th>
-          <th class="order-table2">小計</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
+    <div>
+      <table class="order-confirm-table" border="1">
+        <thead class="table-title">
           <tr>
-            <td>
-              <%= attachment_image_tag cart_item.item, :image, :fill, 65, 45 %>
-              <%= cart_item.item.name %>
-            </td>
-            <td>
-              <%= cart_item.include_tax(1.1).floor.to_s(:delimited) %>
-            </td>
-            <td>
-              <%= cart_item.amount %>
-            </td>
-            <td>
-              <%= (cart_item.include_tax(1.1).floor * cart_item.amount).to_s(:delimited) %>
-            </td>
+            <th class="order-confirm-table1">商品名</th>
+            <th class="order-confirm-table2">単価(税込)</th>
+            <th class="order-confirm-table3">数量</th>
+            <th class="order-confirm-table4">小計</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td>
+                <%= attachment_image_tag cart_item.item, :image, :fill, 65, 45 %>
+                <%= cart_item.item.name %>
+              </td>
+              <td>
+                <%= cart_item.include_tax(1.1).floor.to_s(:delimited) %>
+              </td>
+              <td>
+                <%= cart_item.amount %>
+              </td>
+              <td>
+                <%= (cart_item.include_tax(1.1).floor * cart_item.amount).to_s(:delimited) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-    <table class="cart-table total-table ml-5" border="1">
+
+    <table class="total-table ml-5" border="1">
       <tbody>
         <tr>
           <td class="table-title total-table1">
             送料
           </td>
-          <td class="total-table1">
+          <td>
             <%= @order.shipping_fee %>
           </td>
         </tr>

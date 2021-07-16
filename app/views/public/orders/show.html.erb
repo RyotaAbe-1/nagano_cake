@@ -15,9 +15,15 @@
           <tr>
             <td>配送先</td>
             <td>
-              <%= "〒#{@order.postal_code}" %>
-              <%= @order.address %>
-              <%= @order.name %>
+              <div>
+                <%= "〒#{@order.postal_code}" %>
+              </div>
+              <div>
+                <%= @order.address %>
+              </div>
+              <div>
+                <%= @order.name %>
+              </div>
             </td>
           </tr>
           <tr>

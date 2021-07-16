@@ -139,29 +139,6 @@ footer {
   line-height: 50px;
 }
 
-// public/orders/confirm
-.order-table {
-  width: 80vh;
-}
-.order-table tr {
-  height: 55px;
-}
-.order-table1 {
-  width: 40%;
-}
-.order-table2 {
-  width: 20%;
-}
-.total-table {
-  width: 20vh;
-}
-.total-table tr {
-  height: 55px;
-}
-.total-table1 {
-  width: 50%;
-}
-
 // public/customers/show
 .customer-table td {
   padding: 10px 5px;
@@ -192,6 +169,38 @@ footer {
 .address-form tr > td:nth-child(2) {
   width: 35%;
 }
+
+// public/orders/confirm
+.order-confirm-table {
+  width: 80vh;
+}
+.order-confirm-table tr {
+  height: 55px;
+}
+.order-confirm-table1 {
+  width: 40%;
+}
+.order-confirm-table2 {
+  width: 20%;
+}
+.order-confirm-table3 {
+  width: 20%;
+}
+.order-confirm-table4 {
+  width: 20%;
+}
+.total-table {
+  width: 20%;
+}
+.total-table td {
+  padding-left: 5px;
+}
+.total-table tr {
+  height: 55px;
+}
+.total-table1 {
+  width: 50%;
+}
 // public/orders/index
 .order-index-table {
   line-height: 1;
@@ -210,7 +219,8 @@ footer {
 }
 // public/orders/show
 .order-show-table1 td {
-  padding: 10px 5px;
+  padding: 14px 5px;
+  line-height: 1;
 }
 .order-show-table1 tr > td:first-child {
   background-color: rgb(244, 239, 232);
@@ -218,7 +228,6 @@ footer {
 .order-show-table1 td:nth-child(2) {
   width: 75%;
 }
-
 .order-show-table2 td {
   padding: 10px 5px;
 }
@@ -226,11 +235,13 @@ footer {
   width: 60%;
   background-color: rgb(244, 239, 232);
 }
-
 .order-show-table3{
   width: 70%;
 }
-.order-show-table3 th, td {
+.order-show-table3 th {
+  padding: 10px 20px 10px 5px;
+}
+.order-show-table3 td {
   padding: 10px 20px 10px 5px;
 }
 .order-show-table3 thead > tr {
