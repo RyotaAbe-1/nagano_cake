@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
 
     if params[:info] == "1"
       @order = Order.new(order_params)
-      @order.id = current_customer.id
+      @order.customer_id = current_customer.id
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
       @order.total_payment = array_total.sum + @order.shipping_fee
     elsif params[:info] == "2"
       @order = Order.new(order_params)
-      @order.id = current_customer.id
+      @order.customer_id = current_customer.id
       address = Address.find(params[:select_info])
       @order.postal_code = address.postal_code
       @order.address = address.address
@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
       @order.total_payment = array_total.sum + @order.shipping_fee
     elsif params[:info] == "3"
       @order = Order.new(order_params)
-      @order.id = current_customer.id
+      @order.customer_id = current_customer.id
       @order.shipping_fee = 800
       @order.total_payment = array_total.sum + @order.shipping_fee
     end
@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
-    order.id = current_customer.id
+    order.customer_id = current_customer.id
     order.shipping_fee = 800
     cart_items = CartItem.where(customer_id: current_customer.id)
     array_total = []
@@ -47,10 +47,29 @@ class Public::OrdersController < ApplicationController
     end
     order.total_payment = array_total.sum + order.shipping_fee
     order.save
+
+    cart_items.each do |cart_item|
+      order_detail = OrderDetail.new
+      order_detail.order_id = order.id
+      order_detail.item_id = cart_item.item_id
+      order_detail.price = cart_item.include_tax(1.1).floor
+      order_detail.amount = cart_item.amount
+      order_detail.save
+    end
+    cart_items =  CartItem.where(customer_id: current_customer.id)
+    cart_items.destroy_all
     redirect_to orders_thanks_path
   end
 
   def thanks
+  end
+
+  def index
+    @orders = Order.where(customer_id: current_customer.id).order(id: "DESC").page(params[:page]).per(6)
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 
   private

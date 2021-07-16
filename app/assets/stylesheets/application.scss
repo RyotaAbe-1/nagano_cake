@@ -192,3 +192,50 @@ footer {
 .address-form tr > td:nth-child(2) {
   width: 35%;
 }
+// public/orders/index
+.order-index-table {
+  line-height: 1;
+}
+.order-index-table thead {
+  height: 55px;
+}
+.order-index-table tr {
+  min-height: 55px;
+}
+.order-index-table th:nth-child(2) {
+  width: 40%;
+}
+.order-index-table td, th {
+  padding-left: 5px;
+}
+// public/orders/show
+.order-show-table1 td {
+  padding: 10px 5px;
+}
+.order-show-table1 tr > td:first-child {
+  background-color: rgb(244, 239, 232);
+}
+.order-show-table1 td:nth-child(2) {
+  width: 75%;
+}
+
+.order-show-table2 td {
+  padding: 10px 5px;
+}
+.order-show-table2 tr > td:first-child {
+  width: 60%;
+  background-color: rgb(244, 239, 232);
+}
+
+.order-show-table3{
+  width: 70%;
+}
+.order-show-table3 th, td {
+  padding: 10px 20px 10px 5px;
+}
+.order-show-table3 thead > tr {
+  background-color: rgb(244, 239, 232);
+}
+.order-show-table3 th:first-child {
+  width: 55%;
+}
