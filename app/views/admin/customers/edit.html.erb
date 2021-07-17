@@ -1,89 +1,81 @@
 <div class="container">
   <div class="col-md-10 mx-auto pt-4">
     <p class="title"><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</p>
-  </div>
 
-  <div class="d-flex mx-auto w-75 mt-5">
-    <div class="mr-5">
-    </div>
-
-    <div  class="w-50">
+    <div class="w-75">
       <%= form_with model: [:admin, @customer], local: true do |f| %>
-      <table>
-        <thead>
-          <tr>
-            <th class="col-3"></th>
-            <th class="col-4"></th>
-            <th class="col-5"></th>
-          </tr>
-        </thead>
-
-        <tbody class="table-height">
-          <tr>
-            <td>会員ID</td>
-            <td>
-              <%= @customer.id %>
-            </td>
-          </tr>
-          <tr>
-            <td>氏名</td>
-            <td>
-              <%= f.text_field :last_name %>
-            </td>
-            <td>
-              <%= f.text_field :first_name %>
-            </td>
-          </tr>
-          <tr>
-            <td>フリガナ</td>
-            <td>
-              <%= f.text_field :last_name_kana %>
-            </td>
-            <td>
-              <%= f.text_field :first_name_kana %>
-            </td>
-          </tr>
-          <tr>
-            <td>郵便番号</td>
-            <td>
-              <%= f.text_field :postal_code %>
-            </td>
-          </tr>
-          <tr>
-            <td>住所</td>
-            <td>
-              <%= f.text_field :address %>
-            </td>
-          </tr>
-          <tr>
-            <td>電話番号</td>
-            <td>
-              <%= f.text_field :telephone_number %>
-            </td>
-          </tr>
-          <tr>
-            <td>メールアドレス</td>
-            <td>
-              <%= f.text_field :email %>
-            </td>
-          </tr>
-          <tr>
-            <td>会員ステータス</td>
-            <label>
-              <%= f.radio_button :is_active, :true, checked: true %>有効
-            </label>
-            <label>
-              <%= f.radio_button :is_active, :false %>退会
-            </label>
-          </tr>
-        </tbody>
-      </table>
-
-      <%= f.submit "変更を保存" %>
-
+        <table class="customer-edit-table table-height w-100">
+          <tbody>
+            <tr>
+              <td>会員ID</td>
+              <td>
+                <%= @customer.id %>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>氏名</td>
+              <td>
+                <%= f.text_field :last_name %>
+              </td>
+              <td>
+                <%= f.text_field :first_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>フリガナ</td>
+              <td>
+                <%= f.text_field :last_name_kana %>
+              </td>
+              <td>
+                <%= f.text_field :first_name_kana %>
+              </td>
+            </tr>
+            <tr>
+              <td>郵便番号</td>
+              <td>
+                <%= f.text_field :postal_code %>
+              </td>
+            </tr>
+            <tr>
+              <td>住所</td>
+              <td colspan="2">
+                <%= f.text_field :address, class: "w-100" %>
+              </td>
+            </tr>
+            <tr>
+              <td>電話番号</td>
+              <td>
+                <%= f.text_field :telephone_number %>
+              </td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td colspan="2">
+                <%= f.text_field :email, class: "w-100" %>
+              </td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td class="d-flex">
+                <div>
+                  <%= f.radio_button :is_active, :true, checked: true, id: "radio-true" %><label for="radio-true">有効</label>
+                </div>
+                <div class="ml-3">
+                  <%= f.radio_button :is_active, :false, id: "radio-false" %><label for="radio-false">退会</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="pt-3">
+                <%= f.submit "変更を保存", class: "btn btn-success" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       <% end %>
-
     </div>
-  </div>
 
+  </div>
 </div>
