@@ -2,24 +2,22 @@
   <div class="col-md-8 mx-auto">
     <p class="title">管理者用ログイン</p>
 
-    <div class="form-group col-8 mx-auto mt-4">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field d-flex mb-3">
-          <label>メールアドレス</label>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm w-75 ml-auto" %>
-        </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="w-75 mx-auto">
+        <tr>
+          <td class="w-25 py-2">メールアドレス</td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-sm" %></td>
+        </tr>
+        <tr>
+          <td class="py-2">パスワード</td>
+          <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-sm" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td class="pt-4"><%= f.submit "ログイン", class: "btn btn-primary btn-sm px-4" %></td>
+        </tr>
+      </table>
+    <% end %>
 
-        <div class="field d-flex mb-3">
-          <label>パスワード</label>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-sm w-75 ml-auto" %>
-        </div>
-
-        <div class="actions text-center">
-          <%= f.submit "ログイン", class: "btn btn-primary btn-sm px-4" %>
-        </div>
-      <% end %>
-
-    </div>
   </div>
-
 </div>
