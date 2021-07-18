@@ -57,6 +57,13 @@ footer {
   text-decoration: none;
   color: black;
 }
+.page {
+  margin-left: 5px;
+}
+.next, .last {
+  margin-left: 5px;
+}
+
  // admin/customers/index
 .customer-index-table th:nth-child(3) {
   width: 40%;

@@ -8,11 +8,11 @@ class Admin::OrderDetailsController < ApplicationController
     if order_detail.product_status == "制作中"
       order.update(order_status: "制作中")
     end
-    array = []
+    array_status = []
     order.order_details.each do |order_detail|
-      array.push(order_detail.product_status)
+      array_status.push(order_detail.product_status)
     end
-    if array.all?{|n| n == "制作完了"}
+    if array_status.all?{|n| n == "制作完了"}
       order.update(order_status: "発送準備中")
     end
     redirect_to admin_order_path(order.id)
