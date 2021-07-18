@@ -82,6 +82,45 @@ footer {
   box-shadow: 3px 3px gray;
   color: gray;
 }
+// admin/orders/show
+
+.admin-orders-show1 tr > td:nth-child(1) {
+  width: 25%;
+}
+.admin-orders-show2 {
+width: 70%;
+}
+.admin-orders-show2 tr {
+  height: 50px;
+}
+.admin-orders-show2 tr > th:first-child {
+  width: 30%;
+}
+.admin-orders-show2 tr > th:nth-child(2) {
+  width: 15%;
+}
+.admin-orders-show2 tr > th:nth-child(3) {
+  width: 10%;
+}
+.admin-orders-show2 tr > th:nth-child(4) {
+  width: 15%;
+}
+.admin-orders-show3 {
+  width: 30%;
+
+}
+.admin-orders-show3 table {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+}
+.admin-orders-show3 tr > td:last-child {
+  width: 50%;
+}
+.admin-orders-show3 td {
+  height: 50px;
+}
+
 // customers/registration
 .sign-up-th1 {
   width: 35%;

@@ -1,7 +1,11 @@
 <div class="container mt-3">
   <div class="col-md-10 mx-auto pt-4">
-    <p class="title">注文履歴一覧</p>
-
+    <% if @customer %>
+      <p class="title"><%= @customer.last_name + @customer.first_name %>さんの注文履歴一覧</p>
+    <% else %>
+      <p class="title">注文履歴一覧</p>
+    <% end %>
+  
     <table class="border-top w-100 mt-3">
       <thead class="table-title table-height">
         <tr class="border-bottom">
