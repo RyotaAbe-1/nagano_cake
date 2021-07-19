@@ -12,61 +12,86 @@
   <body class="border border-dark">
     <header class="border-bottom border-dark">
 
-      <div class="d-flex justify-content-between align-items-center mx-5">
-        <div class="py-2 mt-5 mb-4">
+      <div class="d-flex justify-content-around align-items-center">
+        <div class="">
           <%= link_to root_path do %>
             <%= image_tag 'logo.jpg', class: "logo border" %>
           <% end %>
         </div>
 
-        <div class="d-flex">
-          <% if admin_signed_in? %>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "商品一覧", admin_items_path %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "会員一覧", admin_customers_path %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "注文履歴一覧", admin_root_path %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "ジャンル一覧", admin_genres_path %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-            </p>
-          <% elsif customer_signed_in? %>
-            <p class="mr-5">
-              <%= "ようこそ、#{Customer.find(current_customer.id).last_name}さん！" %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "マイページ", customers_path %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "商品一覧", items_path %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "カート", cart_items_path %>
-            </p>
-            <p class="btn btn-outline-secondary btn-sm ml-4">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-            </p>
-          <% else %>
-            <p class="btn btn-outline-secondary ml-4">
-              <%= link_to "About", about_path %>
-            </p>
-            <p class="btn btn-outline-secondary ml-4">
-              <%= link_to "商品一覧", items_path %>
-            </p>
-            <p class="btn btn-outline-secondary ml-4">
-              <%= link_to "新規登録", new_customer_registration_path %>
-            </p>
-            <p class="btn btn-outline-secondary ml-4">
-              <%= link_to "ログイン", new_customer_session_path %>
-            </p>
-          <% end %>
+        <div class="my-4">
+          <div class="d-flex">
+            <% if admin_signed_in? %>
+              <div class="h4 mr-5 text-danger">
+                管理者用画面
+              </div>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "商品一覧", admin_items_path %>
+              </p>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "会員一覧", admin_customers_path %>
+              </p>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "注文履歴一覧", admin_root_path %>
+              </p>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "ジャンル一覧", admin_genres_path %>
+              </p>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              </p>
+            <% elsif customer_signed_in? %>
+              <div class="mr-5 pt-4">
+                <%= "ようこそ、#{Customer.find(current_customer.id).last_name}さん！" %>
+              </div>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "マイページ", customers_path %>
+              </p>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "商品一覧", items_path %>
+              </p>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "カート", cart_items_path %>
+              </p>
+              <p class="btn btn-outline-secondary btn-sm ml-4">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+              </p>
+            <% else %>
+              <p class="btn btn-outline-secondary ml-4">
+                <%= link_to "About", about_path %>
+              </p>
+              <p class="btn btn-outline-secondary ml-4">
+                <%= link_to "商品一覧", items_path %>
+              </p>
+              <p class="btn btn-outline-secondary ml-4">
+                <%= link_to "新規登録", new_customer_registration_path %>
+              </p>
+              <p class="btn btn-outline-secondary ml-4">
+                <%= link_to "ログイン", new_customer_session_path %>
+              </p>
+            <% end %>
+          </div>
+
+          <div class="d-flex">
+            <% if admin_signed_in? %>
+              <div class="ml-auto">
+                <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+                  <%= f.select :category, [["商品検索", 1], ["会員検索", 2], ["注文検索", 3]]%>
+                  <%= f.text_field :keyword %>
+                  <%= f.submit "search" %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="ml-auto">
+                <%= form_with url: items_path, method: :get, local: true do |f| %>
+                  <%= f.text_field :keyword %>
+                  <%= f.submit "search" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
+
       </div>
 
     </header>

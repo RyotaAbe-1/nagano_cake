@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   skip_before_action :authenticate_admin!
-  
+
   def new
     @order = Order.new
     @addresses = Address.where(customer_id: current_customer.id)
@@ -32,9 +32,14 @@ class Public::OrdersController < ApplicationController
       @order.total_payment = array_total.sum + @order.shipping_fee
     elsif params[:info] == "3"
       @order = Order.new(order_params)
-      @order.customer_id = current_customer.id
-      @order.shipping_fee = 800
-      @order.total_payment = array_total.sum + @order.shipping_fee
+      unless @order.postal_code.empty? && @order.address.empty? && @order.name.empty?
+        @order.customer_id = current_customer.id
+        @order.shipping_fee = 800
+        @order.total_payment = array_total.sum + @order.shipping_fee
+      else
+        @addresses = Address.where(customer_id: current_customer.id)
+        render :new
+      end
     end
   end
 
@@ -58,7 +63,7 @@ class Public::OrdersController < ApplicationController
       order_detail.amount = cart_item.amount
       order_detail.save
     end
-    cart_items =  CartItem.where(customer_id: current_customer.id)
+    
     cart_items.destroy_all
     redirect_to orders_thanks_path
   end

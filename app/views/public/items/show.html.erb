@@ -37,8 +37,14 @@
         <div class="mt-5">
           <%= form_with model: @cart_item, url: {controller: "public/cart_items", action: "create", id: @item.id}, local: true do |f| %>
             <% array_amount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
-            <%= f.select :amount, array_amount, prompt: "個数選択", class: "form-control" %>
-            <%= f.submit "カートに入れる", class: "btn btn-success btn-sm ml-5" %>
+            <div class="d-flex">
+              <div class="mr-5">
+              <%= f.select :amount, array_amount, prompt: "個数選択" %>
+              </div>
+              <div>
+                <%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>

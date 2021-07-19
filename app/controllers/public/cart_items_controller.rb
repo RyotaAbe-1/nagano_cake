@@ -1,17 +1,22 @@
 class Public::CartItemsController < ApplicationController
   skip_before_action :authenticate_admin!
-  
+
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
   def create
-    item = Item.find(params[:id])
-    cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id = current_customer.id
-    cart_item.item_id = item.id
-    cart_item.save
-    redirect_to cart_items_path
+    @item = Item.find(params[:id])
+    @genres = Genre.all
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+    @cart_item.item_id = @item.id
+    if @cart_item.save
+      redirect_to cart_items_path
+    else
+      render "public/items/show"
+    end
+
   end
 
   def update

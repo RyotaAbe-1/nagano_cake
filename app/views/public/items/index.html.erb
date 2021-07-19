@@ -4,6 +4,9 @@
       <% if @genre %>
         <strong class="h3"><%= "#{@genre.name}一覧 "%></strong>
         <strong><%= "(全#{@items_all.count}件)" %></strong>
+      <% elsif @search %>
+        <strong class="h3"><%= "#{@search} の検索結果" %></strong>
+        <strong><%= "(全#{@items_all.count}件)" %></strong>
       <% else %>
         <strong class="h3">商品一覧</strong>
         <strong><%= "(全#{@items_all.count}件)" %></strong>

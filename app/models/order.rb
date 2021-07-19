@@ -13,4 +13,13 @@ class Order < ApplicationRecord
     "発送準備中":3,
     "発送済み":4
   }
+
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
+
+  def self.search(keyword)
+    where("created_at LIKE? OR name LIKE?", "%#{keyword}%", "%#{keyword}%")
+  end
+
 end

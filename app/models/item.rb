@@ -12,5 +12,10 @@ class Item < ApplicationRecord
 
   attachment :image
 
-
+  def self.search(keyword)
+    if keyword
+      where("name LIKE? OR introduction LIKE?", "%#{keyword}%", "%#{keyword}%")
+    end
+  end
+  
 end
