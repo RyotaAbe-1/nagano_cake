@@ -36,10 +36,17 @@ class Public::OrdersController < ApplicationController
         @order.customer_id = current_customer.id
         @order.shipping_fee = 800
         @order.total_payment = array_total.sum + @order.shipping_fee
+        address = Address.new
+        address.customer_id = current_customer.id
+        address.name = @order.name
+        address.postal_code = @order.postal_code
+        address.address = @order.address
+        address.save
       else
         @addresses = Address.where(customer_id: current_customer.id)
         render :new
       end
+
     end
   end
 
@@ -63,7 +70,6 @@ class Public::OrdersController < ApplicationController
       order_detail.amount = cart_item.amount
       order_detail.save
     end
-    
     cart_items.destroy_all
     redirect_to orders_thanks_path
   end
