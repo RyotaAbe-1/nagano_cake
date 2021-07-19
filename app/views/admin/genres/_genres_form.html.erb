@@ -1,0 +1,17 @@
+<%= form_with model:[:admin, genre], local: true do |f| %>
+  <div class="d-flex justify-content-between align-items-center w-50">
+    <div>
+      ジャンル
+    </div>
+    <div>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <% if edit_frag == true %>
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+      <% elsif edit_frag == false %>
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
